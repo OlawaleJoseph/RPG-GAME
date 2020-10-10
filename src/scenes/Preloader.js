@@ -1,6 +1,4 @@
 import Phaser from 'phaser';
-import Button from '../assets/components/button.png';
-import HoverButton from '../assets/components/button_hover.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -76,8 +74,10 @@ export default class PreloaderScene extends Phaser.Scene {
 
     this.timedEvent = this.time.delayedCall(3000, this.ready, [], this);
 
-    this.load.image('button', Button);
-    this.load.image('button_hover', HoverButton);
+    this.load.image('button', '../src/assets/components/button.png');
+    this.load.image('button_hover', '../src/assets/components/button_hover.png');
+    this.load.image('checkedBox', '../src/assets/components/checkedBox.png');
+    this.load.image('box', '../src/assets/components/box.png');
     this.load.audio('theme', ['../src/assets/sound/theme_sound.ogg']);
     this.load.audio('battle', ['../src/assets/sound/battle_theme.mp3']);
   }

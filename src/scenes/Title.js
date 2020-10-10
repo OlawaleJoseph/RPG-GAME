@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import config from '../config/config';
 import Button from '../components/Button';
+import { button1, button2 } from '../utils/common';
 
 export default class TitleScene extends Phaser.Scene {
   constructor() {
@@ -10,8 +11,6 @@ export default class TitleScene extends Phaser.Scene {
   create() {
     const averageScreenWidth = config.width / 2;
     const averageScreenHeight = config.height / 2;
-    const button1 = 'button';
-    const button2 = 'button_hover';
 
     this.gameButton = new Button(this, averageScreenWidth, averageScreenHeight - 150, button1, button2, 'Play', 'Game');
 
