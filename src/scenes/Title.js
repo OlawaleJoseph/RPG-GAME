@@ -20,6 +20,14 @@ export default class TitleScene extends Phaser.Scene {
     this.creditsButton = new Button(this, averageScreenWidth, averageScreenHeight + 50, button1, button2, 'Credits', 'Credits');
 
     this.leaderBoardButton = new Button(this, averageScreenWidth, averageScreenHeight + 150, button1, button2, 'Rankings', 'Rankings');
+
+    this.model = this.sys.game.globals.model;
+    if (this.model.musicOn && !this.model.bgMusicPlaying) {
+      this.bgMusic = this.sound.add('theme', { volume: 1, loop: true });
+      this.bgMusic.play();
+      this.model.bgMusicPlaying = true;
+      this.sys.game.globals.bgMusic = this.bgMusic;
+    }
   }
 
   centerButton(gameObject, offset = 0) {
