@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
-export default (text, container) => {
+export default (child, container) => {
   Phaser.Display.Align.In.Center(
-    text, container,
+    child, container,
   );
 };
