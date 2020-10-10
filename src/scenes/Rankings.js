@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
+import Button from '../components/Button';
 import config from '../config/config';
+import { button1, button2 } from '../utils/common';
 
 export default class RankingScene extends Phaser.Scene {
   constructor() {
@@ -13,5 +15,7 @@ export default class RankingScene extends Phaser.Scene {
     );
 
     Phaser.Display.Align.In.TopCenter(myText, this.zone);
+
+    this.menuButton = new Button(this, 400, 500, button1, button2, 'Menu', 'Title');
   }
 }
