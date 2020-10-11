@@ -5,3 +5,5 @@ export default (child, container) => {
     child, container,
   );
 };
+
+export const generateRandomNumberInRange = (min, max) => Phaser.Math.RND.between(min, max);

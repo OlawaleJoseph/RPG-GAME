@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { generateRandomNumberInRange } from '../utils/phaserHelper';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -55,20 +56,23 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-    
+
     this.chests = this.physics.add.group();
     for (let i = 0; i < 30; i += 1) {
       const x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
       const y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
-      // parameters are x, y, width, height
-      this.chests.create(x, y, 'closed_chest', true);
+      this.chests.create(x, y, 'closed_chest', 0, true);
     }
     this.physics.add.collider(this.player, obstacles);
     this.physics.add.overlap(this.player, this.chests, this.onMeetEnemy, false, this);
   }
 
-  onMeetEnemy() {
-    console.log('Enemy');
+  onMeetEnemy(player, chest) {
+    chest.x = generateRandomNumberInRange(0, this.physics.world.bounds.width);
+    chest.y = generateRandomNumberInRange(0, this.physics.world.bounds.height);
+    this.cameras.main.shake(300);
+    this.cameras.main.flash(10);
+    // this.cameras.main.fade(4);
   }
 
   update() {
