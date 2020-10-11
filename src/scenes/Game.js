@@ -1,8 +1,4 @@
 import Phaser from 'phaser';
-// import Button from '../components/Button';
-// import config from '../config/config';
-// import { button1, button2 } from '../utils/common';
-// import centerItem from '../utils/phaserHelper';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
@@ -21,7 +17,7 @@ export default class GameScene extends Phaser.Scene {
 
     obstacles.setCollisionByExclusion([-1]);
 
-    this.player = this.physics.add.sprite(20, 100, 'hero', 1);
+    this.player = this.physics.add.sprite(20, 100, 'hero', 20);
     this.physics.world.bounds.width = map.widthInPixels;
     this.physics.world.bounds.height = map.heightInPixels;
     this.player.setCollideWorldBounds(true);
@@ -59,22 +55,32 @@ export default class GameScene extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
+    
+    this.chests = this.physics.add.group();
+    for (let i = 0; i < 30; i += 1) {
+      const x = Phaser.Math.RND.between(0, this.physics.world.bounds.width);
+      const y = Phaser.Math.RND.between(0, this.physics.world.bounds.height);
+      // parameters are x, y, width, height
+      this.chests.create(x, y, 'closed_chest', true);
+    }
     this.physics.add.collider(this.player, obstacles);
+    this.physics.add.overlap(this.player, this.chests, this.onMeetEnemy, false, this);
   }
 
-  update(time, delta) {
+  onMeetEnemy() {
+    console.log('Enemy');
+  }
+
+  update() {
     this.player.body.setVelocity(0);
 
-    // Horizontal movement
     if (this.cursors.left.isDown) {
       this.player.flipX = true;
       this.player.body.setVelocityX(-80);
     } else if (this.cursors.right.isDown) {
       this.player.flipX = false;
       this.player.body.setVelocityX(80);
-    }
-    // Vertical movement
-    if (this.cursors.up.isDown) {
+    } else if (this.cursors.up.isDown) {
       this.player.body.setVelocityY(-80);
     } else if (this.cursors.down.isDown) {
       this.player.body.setVelocityY(80);

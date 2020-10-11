@@ -85,6 +85,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.tilemapTiledJSON('map', '../src/assets/tiles/map.json');
 
     this.load.spritesheet('hero', '../src/assets/characters/hero.png', { frameWidth: 16, frameHeight: 16 });
+
+    this.load.image('closed_chest', '../src/assets/images/chest_closed.png');
+    this.load.image('opened_chest', '../src/assets/images/chest_open.png');
   }
 
   ready() {
