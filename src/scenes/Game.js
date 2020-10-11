@@ -32,5 +32,33 @@ export default class GameScene extends Phaser.Scene {
     this.cameras.main.startFollow(this.player);
     this.cameras.main.roundPixels = true;
     // this.cameras.main.zoom = 2;
+
+    this.anims.create({
+      key: 'right',
+      frames: this.anims.generateFrameNumbers('player2', { frames: [4, 5, 6, 7] }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'left',
+      frames: this.anims.generateFrameNumbers('player2', { frames: [4, 5, 6, 7] }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+    this.anims.create({
+      key: 'up',
+      frames: this.anims.generateFrameNumbers('player2', { frames: [12, 13, 14, 15] }),
+      frameRate: 10,
+      repeat: -1,
+    });
+    this.anims.create({
+      key: 'down',
+      frames: this.anims.generateFrameNumbers('player2', { frames: [20, 21, 22, 23] }),
+      frameRate: 10,
+      repeat: -1,
+    });
+    this.physics.add.collider(this.player, obstacles);
   }
 }
