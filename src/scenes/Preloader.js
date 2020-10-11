@@ -80,6 +80,9 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('box', '../src/assets/components/box.png');
     this.load.audio('theme', ['../src/assets/sound/theme_sound.ogg']);
     this.load.audio('battle', ['../src/assets/sound/battle_theme.mp3']);
+    this.load.image('tiles', '../src/assets/tiles/tiles.png');
+
+    this.load.tilemapTiledJSON('map', '../src/assets/tiles/map.json');
   }
 
   ready() {
