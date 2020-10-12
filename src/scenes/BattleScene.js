@@ -20,7 +20,7 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   startBattle() {
-    const warrior = new Player(this, 450, 200, 'hero', 4, 'Hero', 100, generateRandomNumberInRange(10, 50));
+    const warrior = new Player(this, 700, 200, 'hero', 4, 'Hero', 100, generateRandomNumberInRange(10, 50));
     warrior.scale = 3;
     warrior.flipX = true;
     this.add.existing(warrior);

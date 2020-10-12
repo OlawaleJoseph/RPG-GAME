@@ -12,7 +12,7 @@ export default class BattleScene extends Phaser.Scene {
 
   create() {
     const { height, width } = this.cameras.main;
-    const rectX = (width / 2);
+    const rectX = (width / 2) - 50;
 
     this.graphics = this.add.graphics();
     this.graphics.lineStyle(1, 0xffffff);
