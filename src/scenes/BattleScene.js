@@ -37,7 +37,7 @@ export default class BattleScene extends Phaser.Scene {
     this.scene.launch('BattleMenu');
   }
 
-  endBattle() {
+  endBattle(result) {
     this.heroes.length = 0;
     this.enemies.length = 0;
     for (let i = 0; i < this.units.length; i += 1) {
@@ -45,8 +45,15 @@ export default class BattleScene extends Phaser.Scene {
     }
     this.units.length = 0;
     this.index = -1;
-    this.scene.sleep('BattleMenu');
-    this.scene.switch('Game');
+
+    if (result === 'gameOver') {
+      this.scene.stop('Game');
+      this.scene.sleep('BattleMenu');
+      this.scene.switch('GameOver');
+    } else if (result === 'victory') {
+      this.scene.sleep('BattleMenu');
+      this.scene.switch('Game');
+    }
   }
 
   receivePlayerSelection(action, target) {
@@ -78,6 +85,7 @@ export default class BattleScene extends Phaser.Scene {
     if (gameOver) {
       return 'gameOver';
     }
+
     return victory || gameOver;
   }
 
