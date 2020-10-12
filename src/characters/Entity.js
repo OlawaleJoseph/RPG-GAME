@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-export default class Base extends Phaser.GameObjects.Sprite {
+export default class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, texture, frame, type, hp, damage) {
     super(scene, x, y, texture, frame);
 

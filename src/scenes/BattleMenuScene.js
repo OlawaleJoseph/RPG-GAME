@@ -7,6 +7,7 @@ import Message from '../UI/Message';
 export default class BattleScene extends Phaser.Scene {
   constructor() {
     super('BattleMenu');
+    this.loaded = false;
   }
 
   create() {
@@ -44,9 +45,11 @@ export default class BattleScene extends Phaser.Scene {
 
     this.battleScene.events.on('PlayerSelect', this.onPlayerSelect, this);
 
-    this.events.on('SelectEnemy', this.onSelectEnemy, this);
-
-    this.events.on('Enemy', this.onEnemy, this);
+    if (!this.loaded) {
+      this.events.on('SelectEnemy', this.onSelectEnemy, this);
+      this.events.on('Enemy', this.onEnemy, this);
+      this.loaded = true;
+    }
 
     this.sys.events.on('wake', this.createMenu, this);
 

@@ -6,10 +6,10 @@ import { generateRandomNumberInRange } from '../utils/phaserHelper';
 export default class BattleScene extends Phaser.Scene {
   constructor() {
     super('Battle');
-    this.score = 0;
   }
 
   create() {
+    this.score = 0;
     this.model = this.sys.game.globals.model;
     this.cameras.main.setBackgroundColor('rgba(34,139,34)');
 
@@ -47,10 +47,12 @@ export default class BattleScene extends Phaser.Scene {
     }
     this.units.length = 0;
     this.index = -1;
-    console.log(result);
     if (result === 'gameOver') {
+      this.sys.game.globals.model.score = this.score;
       this.scene.stop('Game');
       this.scene.sleep('BattleMenu');
+
+      this.score = 0;
       this.scene.switch('GameOver');
     } else {
       this.scene.sleep('BattleMenu');
@@ -118,6 +120,5 @@ export default class BattleScene extends Phaser.Scene {
 
   update() {
     this.scoreText.setText(`Score: ${this.score}`);
-    this.sys.game.globals.model.score = this.score;
   }
 }

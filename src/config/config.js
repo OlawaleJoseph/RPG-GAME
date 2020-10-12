@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 export default {
   type: Phaser.AUTO,
+  parent: 'phaser-game',
   width: 800,
   height: 600,
   pixelArt: true,
@@ -11,8 +12,5 @@ export default {
       gravity: { y: 0 },
       debug: true,
     },
-  },
-  dom: {
-    createContainer: true,
   },
 };
