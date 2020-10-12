@@ -6,6 +6,7 @@ export default class BattleScene extends Phaser.Scene {
   constructor() {
     super('Battle');
     this.score = 0;
+    this.model = this.sys.game.globals.model;
   }
 
   create() {
