@@ -8,7 +8,7 @@ export const getHighScores = async () => {
 };
 
 export const postHighScore = async (name, score) => {
-  const data = { name, score };
+  const data = { user: name, score };
   const response = await fetch(url, {
     method: 'POST',
     mode: 'cors',

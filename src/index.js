@@ -11,6 +11,7 @@ import GameScene from './scenes/Game';
 import BattleScene from './scenes/BattleScene';
 import UserInfoScene from './scenes/UserInfo';
 import BattleMenuScene from './scenes/BattleMenuScene';
+import GameOverScene from './scenes/GameOver';
 
 class Game extends Phaser.Game {
   constructor() {
@@ -27,6 +28,7 @@ class Game extends Phaser.Game {
     this.scene.add('Battle', BattleScene);
     this.scene.add('BattleMenu', BattleMenuScene);
     this.scene.add('BattleMenu', UserInfoScene);
+    this.scene.add('GameOver', GameOverScene);
     this.scene.start('Boot');
   }
 }

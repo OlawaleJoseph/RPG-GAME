@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import Player from '../characters/Hero';
 import Troll from '../characters/Enemy';
+import { generateRandomNumberInRange } from '../utils/phaserHelper';
 
 export default class BattleScene extends Phaser.Scene {
   constructor() {
@@ -19,12 +20,12 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   startBattle() {
-    const warrior = new Player(this, 450, 200, 'hero', 4, 'Hero', 100, 20);
+    const warrior = new Player(this, 450, 200, 'hero', 4, 'Hero', 100, generateRandomNumberInRange(10, 50));
     warrior.scale = 3;
     warrior.flipX = true;
     this.add.existing(warrior);
 
-    const troll = new Troll(this, 50, 200, 'troll', null, 'Troll', 50, 3);
+    const troll = new Troll(this, 50, 200, 'troll', null, 'Troll', 50, 100);
     troll.scale = 2;
     this.add.existing(troll);
     this.heroes = [warrior];
@@ -37,7 +38,8 @@ export default class BattleScene extends Phaser.Scene {
     this.scene.launch('BattleMenu');
   }
 
-  endBattle(result) {
+  endBattle() {
+    const result = this.checkEndBattle();
     this.heroes.length = 0;
     this.enemies.length = 0;
     for (let i = 0; i < this.units.length; i += 1) {
@@ -45,12 +47,12 @@ export default class BattleScene extends Phaser.Scene {
     }
     this.units.length = 0;
     this.index = -1;
-
+    console.log(result);
     if (result === 'gameOver') {
       this.scene.stop('Game');
       this.scene.sleep('BattleMenu');
       this.scene.switch('GameOver');
-    } else if (result === 'victory') {
+    } else {
       this.scene.sleep('BattleMenu');
       this.scene.switch('Game');
     }
