@@ -6,7 +6,6 @@ export default class BattleScene extends Phaser.Scene {
   constructor() {
     super('Battle');
     this.score = 0;
-    this.scoreText = '';
   }
 
   create() {
@@ -15,7 +14,7 @@ export default class BattleScene extends Phaser.Scene {
     this.startBattle();
 
     this.sys.events.on('wake', this.startBattle, this);
-    this.scoreText = this.add.text(600, 16, `Score: ${this.score}`, { fontSize: '32px', fill: '#000' });
+    this.scoreText = this.add.text(600, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
   }
 
   startBattle() {
@@ -27,7 +26,6 @@ export default class BattleScene extends Phaser.Scene {
     const troll = new Troll(this, 50, 200, 'troll', null, 'Troll', 50, 3);
     troll.scale = 2;
     this.add.existing(troll);
-
     this.heroes = [warrior];
 
     this.enemies = [troll];
@@ -53,6 +51,7 @@ export default class BattleScene extends Phaser.Scene {
   receivePlayerSelection(action, target) {
     if (action === 'attack') {
       this.units[this.index].attack(this.enemies[target]);
+      this.score += 10;
     }
     this.time.addEvent({ delay: 1000, callback: this.nextTurn, callbackScope: this });
   }
@@ -104,5 +103,10 @@ export default class BattleScene extends Phaser.Scene {
 
       this.time.addEvent({ delay: 2000, callback: this.nextTurn, callbackScope: this });
     }
+  }
+
+  update() {
+    this.scoreText.setText(`Score: ${this.score}`);
+    this.sys.game.globals.model.score = this.score;
   }
 }
