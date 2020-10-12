@@ -5,6 +5,8 @@ import Troll from '../characters/Enemy';
 export default class BattleScene extends Phaser.Scene {
   constructor() {
     super('Battle');
+    this.score = 0;
+    this.scoreText = '';
   }
 
   create() {
@@ -13,6 +15,7 @@ export default class BattleScene extends Phaser.Scene {
     this.startBattle();
 
     this.sys.events.on('wake', this.startBattle, this);
+    this.scoreText = this.add.text(600, 16, `Score: ${this.score}`, { fontSize: '32px', fill: '#000' });
   }
 
   startBattle() {
