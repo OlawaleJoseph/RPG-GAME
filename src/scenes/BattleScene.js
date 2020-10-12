@@ -8,8 +8,7 @@ export default class BattleScene extends Phaser.Scene {
   }
 
   create() {
-    // change the background to green
-    this.cameras.main.setBackgroundColor('rgba(0, 200, 0, 0.5)');
+    this.cameras.main.setBackgroundColor('rgba(34,139,34)');
 
     this.startBattle();
 
@@ -22,7 +21,7 @@ export default class BattleScene extends Phaser.Scene {
     warrior.flipX = true;
     this.add.existing(warrior);
 
-    const troll = new Troll(this, 50, 200, 'troll', null, 'Dragon', 50, 3);
+    const troll = new Troll(this, 50, 200, 'troll', null, 'Troll', 50, 3);
     troll.scale = 2;
     this.add.existing(troll);
 
@@ -43,8 +42,8 @@ export default class BattleScene extends Phaser.Scene {
       this.units[i].destroy();
     }
     this.units.length = 0;
+    this.index = -1;
     this.scene.sleep('BattleMenu');
-
     this.scene.switch('Game');
   }
 
@@ -52,7 +51,7 @@ export default class BattleScene extends Phaser.Scene {
     if (action === 'attack') {
       this.units[this.index].attack(this.enemies[target]);
     }
-    this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });
+    this.time.addEvent({ delay: 1000, callback: this.nextTurn, callbackScope: this });
   }
 
   exitBattle() {
@@ -68,6 +67,13 @@ export default class BattleScene extends Phaser.Scene {
     let gameOver = true;
     for (let i = 0; i < this.heroes.length; i += 1) {
       if (this.heroes[i].living) gameOver = false;
+    }
+
+    if (victory) {
+      return 'victory';
+    }
+    if (gameOver) {
+      return 'gameOver';
     }
     return victory || gameOver;
   }
@@ -93,7 +99,7 @@ export default class BattleScene extends Phaser.Scene {
       } while (!this.heroes[r].living);
       this.units[this.index].attack(this.heroes[r]);
 
-      this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });
+      this.time.addEvent({ delay: 2000, callback: this.nextTurn, callbackScope: this });
     }
   }
 }

@@ -35,6 +35,9 @@ export default class BattleScene extends Phaser.Scene {
     this.menus.add(this.actionsMenu);
     this.menus.add(this.enemiesMenu);
 
+    this.menus.x = rectX - 90;
+    this.menus.y = height / 2 + 100;
+
     this.battleScene = this.scene.get('Battle');
 
     this.input.keyboard.on('keydown', this.onKeyInput, this);
@@ -89,10 +92,6 @@ export default class BattleScene extends Phaser.Scene {
         this.currentMenu.moveSelectionUp();
       } else if (event.code === 'ArrowDown') {
         this.currentMenu.moveSelectionDown();
-      } else if (event.code === 'ArrowRight' || event.code === 'Shift') {
-        console.log('ON KEY INPUT BATTLE MENU');
-        // CHECK HERE !!!!!!!!!!!!!
-        this.currentMenu.select();
       } else if (event.code === 'Space' || event.code === 'ArrowLeft') {
         this.currentMenu.confirm();
       }

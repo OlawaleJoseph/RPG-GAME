@@ -28,7 +28,7 @@ export default class GameScene extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(this.player);
     this.cameras.main.roundPixels = true;
-    // this.cameras.main.zoom = 2;
+    this.cameras.main.zoom = 2;
 
     this.anims.create({
       key: 'right',
