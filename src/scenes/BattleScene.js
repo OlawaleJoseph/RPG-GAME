@@ -25,7 +25,7 @@ export default class BattleScene extends Phaser.Scene {
     warrior.flipX = true;
     this.add.existing(warrior);
 
-    const troll = new Troll(this, 50, 200, 'troll', null, 'Troll', 50, 100);
+    const troll = new Troll(this, 50, 200, 'troll', null, 'Troll', 50, generateRandomNumberInRange(10, 50));
     troll.scale = 2;
     this.add.existing(troll);
     this.heroes = [warrior];
