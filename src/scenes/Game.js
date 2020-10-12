@@ -65,14 +65,20 @@ export default class GameScene extends Phaser.Scene {
     }
     this.physics.add.collider(this.player, obstacles);
     this.physics.add.overlap(this.player, this.chests, this.onMeetEnemy, false, this);
+    this.sys.events.on('wake', this.wake, this);
   }
 
   onMeetEnemy(player, chest) {
     chest.x = generateRandomNumberInRange(0, this.physics.world.bounds.width);
     chest.y = generateRandomNumberInRange(0, this.physics.world.bounds.height);
-    this.cameras.main.shake(300);
-    this.cameras.main.flash(10);
-    // this.cameras.main.fade(4);
+    this.scene.switch('Battle');
+  }
+
+  wake() {
+    this.cursors.left.reset();
+    this.cursors.right.reset();
+    this.cursors.up.reset();
+    this.cursors.down.reset();
   }
 
   update() {

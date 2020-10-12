@@ -11,21 +11,89 @@ export default class BattleScene extends Phaser.Scene {
     // change the background to green
     this.cameras.main.setBackgroundColor('rgba(0, 200, 0, 0.5)');
 
-    // player character - warrior
+    this.startBattle();
+
+    this.sys.events.on('wake', this.startBattle, this);
+  }
+
+  startBattle() {
     const warrior = new Player(this, 450, 200, 'hero', 4, 'Hero', 100, 20);
     warrior.scale = 3;
     warrior.flipX = true;
     this.add.existing(warrior);
 
-    const enemy = new Troll(this, 50, 200, 'troll', null, 'Dragon', 50, 3);
-    enemy.scale = 2;
-    this.add.existing(enemy);
+    const troll = new Troll(this, 50, 200, 'troll', null, 'Dragon', 50, 3);
+    troll.scale = 2;
+    this.add.existing(troll);
 
-    this.units = [warrior, enemy];
+    this.heroes = [warrior];
 
-    // Run UI Scene at the same time
-    this.scene.launch('BattleMenu');
+    this.enemies = [troll];
+
+    this.units = this.heroes.concat(this.enemies);
 
     this.index = -1;
+    this.scene.launch('BattleMenu');
+  }
+
+  endBattle() {
+    this.heroes.length = 0;
+    this.enemies.length = 0;
+    for (let i = 0; i < this.units.length; i += 1) {
+      this.units[i].destroy();
+    }
+    this.units.length = 0;
+    this.scene.sleep('BattleMenu');
+
+    this.scene.switch('Game');
+  }
+
+  receivePlayerSelection(action, target) {
+    if (action === 'attack') {
+      this.units[this.index].attack(this.enemies[target]);
+    }
+    this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });
+  }
+
+  exitBattle() {
+    this.scene.sleep('BattleMenu');
+    this.scene.switch('Game');
+  }
+
+  checkEndBattle() {
+    let victory = true;
+    for (let i = 0; i < this.enemies.length; i += 1) {
+      if (this.enemies[i].living) victory = false;
+    }
+    let gameOver = true;
+    for (let i = 0; i < this.heroes.length; i += 1) {
+      if (this.heroes[i].living) gameOver = false;
+    }
+    return victory || gameOver;
+  }
+
+  nextTurn() {
+    if (this.checkEndBattle()) {
+      this.endBattle();
+      return;
+    }
+    do {
+      this.index += 1;
+
+      if (this.index >= this.units.length) {
+        this.index = 0;
+      }
+    } while (!this.units[this.index].living);
+    if (this.units[this.index] instanceof Player) {
+      this.events.emit('PlayerSelect', this.index);
+    } else {
+      let r;
+      do {
+        r = Math.floor(Math.random() * this.heroes.length);
+      } while (!this.heroes[r].living);
+      this.units[this.index].attack(this.heroes[r]);
+
+      this.time.addEvent({ delay: 3000, callback: this.nextTurn, callbackScope: this });
+    }
   }
 }
