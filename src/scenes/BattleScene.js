@@ -6,10 +6,10 @@ export default class BattleScene extends Phaser.Scene {
   constructor() {
     super('Battle');
     this.score = 0;
-    this.model = this.sys.game.globals.model;
   }
 
   create() {
+    this.model = this.sys.game.globals.model;
     this.cameras.main.setBackgroundColor('rgba(34,139,34)');
 
     this.startBattle();

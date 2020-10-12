@@ -9,6 +9,7 @@ import RankingScene from './scenes/Rankings';
 import CreditScene from './scenes/Credit';
 import GameScene from './scenes/Game';
 import BattleScene from './scenes/BattleScene';
+import UserInfoScene from './scenes/UserInfo';
 import BattleMenuScene from './scenes/BattleMenuScene';
 
 class Game extends Phaser.Game {
@@ -25,6 +26,7 @@ class Game extends Phaser.Game {
     this.scene.add('Game', GameScene);
     this.scene.add('Battle', BattleScene);
     this.scene.add('BattleMenu', BattleMenuScene);
+    this.scene.add('BattleMenu', UserInfoScene);
     this.scene.start('Boot');
   }
 }

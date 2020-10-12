@@ -12,4 +12,7 @@ export default {
       debug: true,
     },
   },
+  dom: {
+    createContainer: true,
+  },
 };
