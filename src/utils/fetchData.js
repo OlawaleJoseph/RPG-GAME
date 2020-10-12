@@ -3,7 +3,6 @@ const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/game
 export const getHighScores = async () => {
   const res = await fetch(url);
   const { result } = await res.json();
-  console.log(result);
   return result;
 };
 
