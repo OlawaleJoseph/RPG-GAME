@@ -8,6 +8,7 @@ import OptionScene from './scenes/Option';
 import RankingScene from './scenes/Rankings';
 import CreditScene from './scenes/Credit';
 import GameScene from './scenes/Game';
+import BattleScene from './scenes/BattleScene';
 
 class Game extends Phaser.Game {
   constructor() {
@@ -16,11 +17,12 @@ class Game extends Phaser.Game {
     this.globals = { model, bgMusic: null };
     this.scene.add('Boot', BootScene);
     this.scene.add('Preloader', PreloaderScene);
-    this.scene.add('Title', TitleScene);
-    this.scene.add('Options', OptionScene);
-    this.scene.add('Rankings', RankingScene);
-    this.scene.add('Credits', CreditScene);
-    this.scene.add('Game', GameScene);
+    // this.scene.add('Title', TitleScene);
+    // this.scene.add('Options', OptionScene);
+    // this.scene.add('Rankings', RankingScene);
+    // this.scene.add('Credits', CreditScene);
+    // this.scene.add('Game', GameScene);
+    this.scene.add('Battle', BattleScene);
     this.scene.start('Boot');
   }
 }

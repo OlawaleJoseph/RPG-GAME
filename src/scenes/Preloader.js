@@ -87,13 +87,14 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.spritesheet('hero', '../src/assets/characters/hero.png', { frameWidth: 16, frameHeight: 16 });
 
     this.load.image('closed_chest', '../src/assets/images/chest_closed.png');
-    this.load.image('opened_chest', '../src/assets/images/chest_open.png');
+
+    this.load.image('troll', '../src/assets/characters/troll.png');
   }
 
   ready() {
     this.readyCount += 1;
     if (this.readyCount === 2) {
-      this.scene.start('Title');
+      this.scene.start('Battle');
     }
   }
 }
