@@ -21,6 +21,6 @@ export default class CreditsScene extends Phaser.Scene {
     this.menuButton = new Button(this, 400, 500, button1, button2, 'Menu', 'Title');
 
     this.creditsText.setY(100);
-    this.madeByText.setY(500);
+    this.madeByText.setY(400);
   }
 }
