@@ -20,5 +20,12 @@ export default class BattleScene extends Phaser.Scene {
     const enemy = new Troll(this, 50, 200, 'troll', null, 'Dragon', 50, 3);
     enemy.scale = 2;
     this.add.existing(enemy);
+
+    this.units = [warrior, enemy];
+
+    // Run UI Scene at the same time
+    this.scene.launch('BattleMenu');
+
+    this.index = -1;
   }
 }
