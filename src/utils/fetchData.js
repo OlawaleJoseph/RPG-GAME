@@ -24,10 +24,8 @@ export const postHighScore = async (name, score) => {
       },
       body: JSON.stringify(data),
     });
-    console.log(response)
     return response.status === 201;
   } catch (error) {
-    console.log(error)
     return error.name;
   }
 };
