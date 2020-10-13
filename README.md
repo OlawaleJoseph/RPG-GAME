@@ -8,6 +8,7 @@ Building a turn-based RPG game using JavaScript and Phaser game engine
 
 - [Objective](#Objective)
 - [Story](#Story)
+- [Characters](#Characters)
 - [Gameplay](#Gameplay)
 - [How to Play](#How-to-Play)
 - [Technologies Used](#Technologies-Used)
@@ -27,11 +28,24 @@ A Hero goes in search for treasures in a dangerous land where people are known t
 
 [Up](#Table-of-Contents)
 
+### Characters
+
+#### Player
+Moves in all four directions.
+<img src="screenshots/hero.png">
+
+
+#### Troll
+An Enemy that hits your hero. Every hit from the troll reduces the health of the hero by a random value.
+<img src="src/assets/characters/troll.png">
+
+[Up](#Characters)
+
 ### Gameplay
 
-You control a the Hero character using the up, down, left and right navogation keys. 
+You control a the Hero character using the up, down, left and right navigation keys. 
 
-You will get by atroll for every traseure box you open.
+You will get by a troll for every treasure box you open.
 
 When attacked you enter the battle screen where you can attack your enemy by pressing the left arrow key twice. This is a turn-based RPG so each of you attack only once per turn. The battle continues until you defeat all foes or be defeated by them. Health it is been restored to full after each battle.
 
