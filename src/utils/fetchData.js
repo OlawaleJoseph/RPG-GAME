@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 const url = 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/ydEbbe4hrTPWr7GebI0f/scores/';
 
 export const getHighScores = async () => {
@@ -22,8 +24,10 @@ export const postHighScore = async (name, score) => {
       },
       body: JSON.stringify(data),
     });
+    console.log(response)
     return response.status === 201;
   } catch (error) {
+    console.log(error)
     return error.name;
   }
 };
