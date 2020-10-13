@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/06f45e3a-b5b3-4e1b-9242-97a5b2ab2a6f/deploy-status)](https://app.netlify.com/sites/pensive-jepsen-64351b/deploys)
+
 # JavaScript capstone project - RPG game
 
 Building a turn-based RPG game using JavaScript and Phaser game engine
@@ -40,13 +42,13 @@ When attacked you enter the battle screen where you can attack your enemy by pre
 1. #### Start Screen
 
 <p align="center">
-<img src="assets/screens/input.png">
+<img src="screenshots/input.png">
 </p>
 
 Enter your name or avatar on the first screen and click on 'Play Now' button.
 
 <p align="center">
-<img src="assets/screens/menu.png">
+<img src="screenshots/title.png">
 </p>
 
 Next screen is where you control the game. You have 4 options:
@@ -54,7 +56,7 @@ Next screen is where you control the game. You have 4 options:
 2. #### Play
 
 <p align="center">
-<img src="assets/screens/play.png">
+<img src="screenshots/world.png">
 </p>
 
 Here is where the fun begins. By clicking 'Play' you are transferred to the forest. You move your character on the screen by using the four arrow keys. You can move up, down, left, right, and even diagonally if you keep to arrows pressed simultaneously.
@@ -62,7 +64,7 @@ Here is where the fun begins. By clicking 'Play' you are transferred to the fore
 - #### Battlefield
 
 <p align="center">
-<img src="assets/screens/battle.png">
+<img src="screenshots/battle.png">
 </p>
 
 When attacked by foes you are transferred to the Battlefield. On the left side of the screen appear the attacking enemies. On the right side is your hero. The left area lists the names of the enemies, the right area your hero, and in the middle is the attack command.
@@ -74,7 +76,7 @@ If you kill the enemy you return to the forest and you can proceed with your que
 3. #### Options
 
 <p align="center">
-<img src="assets/screens/options.png">
+<img src="screenshots/otions.png">
 </p>
 
 'Music Enabled' checkbox controls whether you will have music during playing or not.
@@ -84,7 +86,7 @@ If you kill the enemy you return to the forest and you can proceed with your que
 4. #### Credits
 
 <p align="center">
-<img src="assets/screens/credits.png">
+<img src="screenshots/credits.png">
 </p>
 
 The credits for this game.
@@ -92,10 +94,16 @@ The credits for this game.
 5. #### LeaderBoard
 
 <p align="center">
-<img src="assets/screens/leaders.png">
+<img src="screenshots/rankings.png">
 </p>
 
 The top 5 best scores are listed on the LeaderBoard.
+
+6. #### Game Over
+
+<p align="center">
+<img src="screenshots/game_over.png">
+</p>
 
 [Up](#Table-of-Contents)
 
@@ -117,7 +125,7 @@ The top 5 best scores are listed on the LeaderBoard.
 ### Live version
 
 The game is hosted on two different servers, macexperts.gr and netlify.com. Both use the same API to store the scores so it does not matter in which one you play. You can play the game here: 
-- [**Dark Forest**](https://darkforest.netlify.app) @ netlify 
+- [**Dark Forest**](https://pensive-jepsen-64351b.netlify.app/)
 
 ### How to Install and Run in Your Computer
 
