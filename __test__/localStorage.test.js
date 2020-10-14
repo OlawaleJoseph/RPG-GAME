@@ -1,5 +1,3 @@
-import '@babel/polyfill';
-
 import { saveNameTolocalstorage, getName } from '../src/utils/storage';
 
 describe('LocalStorage', () => {
@@ -13,5 +11,11 @@ describe('LocalStorage', () => {
     saveNameTolocalstorage();
     const name = localStorage.getItem('playerName');
     expect(name).toEqual('Anonymous');
+  });
+
+  it('Should get user name', () => {
+    saveNameTolocalstorage('MY TESTER');
+    const name = getName();
+    expect(name).toEqual('MY TESTER');
   });
 });
