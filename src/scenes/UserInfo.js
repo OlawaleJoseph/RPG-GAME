@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 import Phaser from 'phaser';
+import { createUserInputForm } from '../utils/common';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -7,12 +8,15 @@ export default class BootScene extends Phaser.Scene {
   }
 
   create() {
-    this.name = prompt('Enter you name');
-    if (!this.name) {
-      this.name = 'ANONYMOUS';
-    }
+    this.add.image(300, 200, 'background');
+    createUserInputForm();
     this.model = this.sys.game.globals.model;
-    this.model.name = this.name.toUpperCase();
-    this.scene.start('Title');
+  }
+
+  update() {
+    const formDisplay = document.querySelector('.hide');
+    if (formDisplay) {
+      this.scene.start('Title');
+    }
   }
 }

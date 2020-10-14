@@ -89,6 +89,8 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('closed_chest', '../src/assets/images/chest_closed.png');
 
     this.load.image('troll', '../src/assets/characters/troll.png');
+
+    this.load.image('background', '../src/assets/images/background.jpeg');
   }
 
   ready() {

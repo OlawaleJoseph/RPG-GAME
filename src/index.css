@@ -3,3 +3,59 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+.wrapper {
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  z-index: 999;
+}
+
+.form_container {
+  position: absolute;
+  width: 500px;
+  height: 350px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form {
+  width: 320px;
+  margin: auto;
+}
+
+.heading {
+  color: green;
+  font-size: 40px;
+  font-weight: 700;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user_input {
+  width: 300px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 30px;
+}
+
+.user_input:focus {
+  border: none;
+  outline: none;
+}
+
+.submit {
+  width: 300px;
+  height: 60px;
+  display: block;
+  border-radius: 50px;
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+.hide {
+  display: none;
+}
