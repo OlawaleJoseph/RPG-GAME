@@ -5,6 +5,64 @@
 Building a turn-based RPG game using JavaScript and Phaser game engine
 
 ## GAME DESIGN DOCUMENTATION
+#### Design Process
+
+> The aim of this project was to create a turn based RPG game with the story centered around a hero(player).
+
+#### Story and game play
+The game is centered is about a hero that goes in serach of treasures in a dangerous land. People known to venture to this land were never seen again, hence the land is called NO ESCAPE. The hero embarking on this perilious journey aims to change all that by conquering all the trolls in the land and getting all the treasures of NO ESCAPE.
+
+#### Assets choice
+Choice of assets for the game was obtained from opengameart.org, this includes player, troll, chest, background, trees.
+
+#### Technical Knowhow
+I followed the tutorial on gamedevacademy.org on how to build a turn based RPG game. I built a simpler version of the game to help me understand how Phaser 3 works and to me familiarize myself with the concept of scenes and events in Phaser 3.
+
+#### Development stage
+##### DAY 1
+> I studied Phaser 3
+
+> I built a mini game with phaser 3
+
+##### DAY 2
+> I gathered required assets
+
+> I scaled images to preferred sizes
+
+##### DAY 3
+> Proloaded assets
+
+> Created a game template
+
+> Created different scenes of the game but not the full functionality
+
+##### DAY 3
+> Created a game template
+
+> Created different scenes of the game but not the full functionality
+
+> Linked scenes to each other to simulate gameplay
+
+##### DAY 4
+> I added animation to player sprite.
+
+> I added collision between player and walls, obstacles.
+
+> I checked for overlap between player and chest, the switched to the battle scene if ther is an overlap.
+
+> I Implemented battle logic of the game. 
+
+> I created the functionality to make async request to get highscores from microverse API and display them.
+
+##### DAY 5
+> I implemented a scene to ask user for their name before the game starts.
+
+> I implemented a scoring functionality.
+
+> I wrote unit tests for the game.
+
+> I refactored the code to make it better.
+
 
 ### Table of Contents
 
@@ -180,9 +238,9 @@ Use your terminal and run the commands after each instruction.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/macnick/RPG-game/issues).
+Feel free to check the [issues page](https://github.com/OlawaleJoseph/RPG-GAME/issues).
 
-1. Fork it (https://github.com/macnick/RPG-game/fork)
+1. Fork it (https://github.com/OlawaleJoseph/RPG-GAME/fork)
 2. Create your feature branch (git checkout -b my-new-feature)
 3. Commit your changes (git commit -am 'Add some feature')
 4. Push to the branch (git push origin my-new-feature)
