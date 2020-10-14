@@ -1,12 +1,17 @@
-import { getHighScores } from '../src/utils/fetchData';
-import { saveNameTolocalstorage, getName } from '../src/utils/common';
+import '@babel/polyfill';
 
-describe('LocalStorage, () => {
-  describe('Should get name from ', () => {
-    it('Shoud sort highscores array in descending order', async () => {
-      const res = await getHighScores();
-      const sorted = res.sort((a, b) => b.score - a.score);
-      expect(sortDescOrder(res)).toEqual(sorted);
-    });
+import { saveNameTolocalstorage, getName } from '../src/utils/storage';
+
+describe('LocalStorage', () => {
+  it('Should set given name to local storage', () => {
+    saveNameTolocalstorage('Tester');
+    const name = localStorage.getItem('playerName');
+    expect(name).toEqual('Tester');
+  });
+
+  it('Should set name to Anonymous when no name is given', () => {
+    saveNameTolocalstorage();
+    const name = localStorage.getItem('playerName');
+    expect(name).toEqual('Anonymous');
   });
 });

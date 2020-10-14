@@ -1,4 +1,5 @@
 import '../index.css';
+import { saveNameTolocalstorage } from './storage';
 
 export const button1 = 'button';
 export const button2 = 'button_hover';
@@ -12,16 +13,12 @@ const createDomElement = (type, className, text = null) => {
   return element;
 };
 
-export const saveNameTolocalstorage = (value = 'Anonymous') => localStorage.setItem('playerName', value);
-
 const handleFormSubmission = (e) => {
   e.preventDefault();
   const name = document.querySelector('.user_input').value;
   saveNameTolocalstorage(name);
   document.querySelector('.wrapper').classList.add('hide');
 };
-
-export const getName = () => localStorage.getItem('playerName').toUpperCase();
 
 export const createUserInputForm = () => {
   const wrapper = createDomElement('div', 'wrapper');
