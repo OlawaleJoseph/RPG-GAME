@@ -4,7 +4,7 @@
 
 Building a turn-based RPG game using JavaScript and Phaser game engine
 
-## DOCUMENTATION
+## GAME DESIGN DOCUMENTATION
 
 ### Table of Contents
 
